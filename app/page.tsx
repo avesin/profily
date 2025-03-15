@@ -1,11 +1,30 @@
+'use client'; // Mark this component as a Client Component
+
 import Image from "next/image";
 import { socialLinks } from "./config";
 import Link from 'next/link';
+import { useState, useRef } from 'react';
 
-export default function Page() {
+
+
+const sections = () => {
   return (
-    <section className="bg-gray-50 py-12">
-  <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200">
+    <div id="resume-content" className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200">
+    {/* Contact Section */}
+    <div className="mb-8 text-center">
+      <h1 className="text-3xl font-bold text-gray-800">Nur Avesina Mustari</h1>
+      <p className="text-gray-600 mt-2">Software Engineer</p>
+      <div className="mt-4 flex justify-center space-x-4">
+        <a href="mailto:your.email@example.com" className="text-blue-500 hover:text-blue-700">
+          nuravesinamustari@gmail.com
+        </a>
+        <span className="text-gray-400">|</span>
+        <a href="tel:+1234567890" className="text-blue-500 hover:text-blue-700">
+          +123 456 7890
+        </a>
+      </div>
+    </div>
+  
     {/* Biography Section */}
     <div className="mb-8">
       <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-200 pb-2">About Me</h2>
@@ -13,7 +32,7 @@ export default function Page() {
         I am a seasoned software engineer with over 9 years of experience specializing in mobile development (Android, iOS, and cross-platform frameworks like Flutter and React Native) and full-stack development (Node.js, Laravel, and Next.js). I have a proven track record of leading engineering teams, optimizing system performance, and delivering scalable, high-quality solutions. My expertise spans DevOps, cloud infrastructure, and Agile methodologies, enabling me to bridge the gap between development and operations seamlessly. I am passionate about mentoring junior developers, solving complex technical challenges, and driving innovation through cutting-edge technologies.
       </p>
     </div>
-
+  
     {/* Top Skills Section */}
     <div className="mb-8">
       <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-200 pb-2">Top Skills</h2>
@@ -25,7 +44,6 @@ export default function Page() {
           "Java",
           "iOS Development",
           "Swift",
-          "SwiftUI",
           "Flutter",
           "React Native",
           "Node.js",
@@ -34,7 +52,6 @@ export default function Page() {
           "Kubernetes (k8s)",
           "CI/CD Pipelines",
           "RESTful APIs",
-          "GraphQL",
           "MVVM Architecture",
           "MVP Architecture",
           "Agile Methodologies",
@@ -48,18 +65,19 @@ export default function Page() {
         ].map((skill, index) => (
           <span
             key={index}
-            className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-sm text-blue-700 font-medium"
+            style={{ fontSize: '0.625rem' }}
+            className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-medium"
           >
             {skill}
           </span>
         ))}
       </div>
     </div>
-
+  
     {/* Experience Section */}
     <div className="mb-8">
       <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-200 pb-2">Experience</h2>
-
+  
       {/* KoinWorks */}
       <div className="mt-6">
         <h3 className="text-xl font-semibold text-gray-800">KoinWorks</h3>
@@ -119,7 +137,7 @@ export default function Page() {
           </li>
         </ul>
       </div>
-
+  
       {/* JAVASIGN */}
       <div className="mt-6">
         <h3 className="text-xl font-semibold text-gray-800">JAVASIGN</h3>
@@ -135,7 +153,7 @@ export default function Page() {
           </li>
         </ul>
       </div>
-
+  
       {/* Indiva Finansia Teknologi */}
       <div className="mt-6">
         <h3 className="text-xl font-semibold text-gray-800">Indiva Finansia Teknologi</h3>
@@ -151,7 +169,7 @@ export default function Page() {
           </li>
         </ul>
       </div>
-
+  
       {/* PT Rabiha Pilar */}
       <div className="mt-6">
         <h3 className="text-xl font-semibold text-gray-800">PT Rabiha Pilar</h3>
@@ -160,7 +178,7 @@ export default function Page() {
           <li className="flex items-start">
             <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-2"></span>
             <div>
-              <p>Developed and maintained company websites using Laravel, ensuring high performance and responsiveness.</p>
+              <p>Developed and maintained SIA websites using php, ensuring high performance and responsiveness.</p>
               <p>Implemented responsive designs to improve user experience across devices.</p>
               <p>Optimized website performance and SEO rankings to increase organic traffic.</p>
             </div>
@@ -168,7 +186,7 @@ export default function Page() {
         </ul>
       </div>
     </div>
-
+  
     {/* Education Section */}
     <div>
       <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-200 pb-2">Education</h2>
@@ -178,6 +196,97 @@ export default function Page() {
       </div>
     </div>
   </div>
-</section>
+  );
+}
+
+export default function Page() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const targetRef = useRef<HTMLDivElement>(null); // Ref for the div to make fullscreen
+  const [isFullscreen, setIsFullscreen] = useState(false); // State to track fullscreen status
+
+  // Function to toggle fullscreen
+  const toggleFullscreen = () => {
+    if (targetRef.current) {
+      if (!isFullscreen) {
+        // Enter fullscreen
+        if (targetRef.current.requestFullscreen) {
+          targetRef.current.requestFullscreen();
+        } else if ((targetRef.current as any).mozRequestFullScreen) {
+          // Firefox
+          (targetRef.current as any).mozRequestFullScreen();
+        } else if ((targetRef.current as any).webkitRequestFullscreen) {
+          // Chrome, Safari, and Opera
+          (targetRef.current as any).webkitRequestFullscreen();
+        } else if ((targetRef.current as any).msRequestFullscreen) {
+          // IE/Edge
+          (targetRef.current as any).msRequestFullscreen();
+        }
+      } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if ((document as any).mozCancelFullScreen) {
+          // Firefox
+          (document as any).mozCancelFullScreen();
+        } else if ((document as any).webkitExitFullscreen) {
+          // Chrome, Safari, and Opera
+          (document as any).webkitExitFullscreen();
+        } else if ((document as any).msExitFullscreen) {
+          // IE/Edge
+          (document as any).msExitFullscreen();
+        }
+      }
+    }
+  };
+
+  // Listen for fullscreen change events
+  const handleFullscreenChange = () => {
+    setIsFullscreen(!!document.fullscreenElement);
+  };
+
+  // Attach event listeners
+  useState(() => {
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  });
+
+  const handlePrint = () => {
+    if (targetRef.current) {
+      const printContent = targetRef.current.innerHTML; // Get the content of the div
+      const originalContent = document.body.innerHTML; // Save the original content
+
+      // Replace the body content with the target div's content
+      document.body.innerHTML = printContent;
+
+      // Trigger the print dialog
+      window.print();
+
+      // Restore the original content
+      document.body.innerHTML = originalContent;
+
+      // Re-render the page (if necessary)
+      window.location.reload();
+    }
+  };
+
+  return (
+    <section className="bg-gray-50 py-12 min-h-screen relative">
+      <div ref={targetRef}>
+      {sections()}
+      </div>
+      <button disabled={isLoading} onClick={handlePrint}  className="fixed bottom-8 right-8 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-200 shadow-lg">
+      {isLoading ? 'Generating...' : 'Download Resume'}
+      </button>
+    </section>
   );
 }
