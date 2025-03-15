@@ -6,6 +6,14 @@ export default function Page() {
   return (
     <section className="bg-gray-50 py-12">
   <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200">
+    {/* Biography Section */}
+    <div className="mb-8">
+      <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-200 pb-2">About Me</h2>
+      <p className="mt-4 text-gray-700 leading-relaxed">
+        I am a seasoned software engineer with over 9 years of experience specializing in mobile development (Android, iOS, and cross-platform frameworks like Flutter and React Native) and full-stack development (Node.js, Laravel, and Next.js). I have a proven track record of leading engineering teams, optimizing system performance, and delivering scalable, high-quality solutions. My expertise spans DevOps, cloud infrastructure, and Agile methodologies, enabling me to bridge the gap between development and operations seamlessly. I am passionate about mentoring junior developers, solving complex technical challenges, and driving innovation through cutting-edge technologies.
+      </p>
+    </div>
+
     {/* Top Skills Section */}
     <div className="mb-8">
       <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-200 pb-2">Top Skills</h2>
