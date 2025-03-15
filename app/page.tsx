@@ -15,12 +15,12 @@ const sections = () => {
       <h1 className="text-3xl font-bold text-gray-800">Nur Avesina Mustari</h1>
       <p className="text-gray-600 mt-2">Software Engineer</p>
       <div className="mt-4 flex justify-center space-x-4">
-        <a href="mailto:your.email@example.com" className="text-blue-500 hover:text-blue-700">
+        <a href="mailto:nuravesinamustari@gmail.com" className="text-blue-500 hover:text-blue-700">
           nuravesinamustari@gmail.com
         </a>
         <span className="text-gray-400">|</span>
-        <a href="tel:+1234567890" className="text-blue-500 hover:text-blue-700">
-          +123 456 7890
+        <a href="tel:+6285959345***" className="text-blue-500 hover:text-blue-700">
+          +62 8595 9345 ***
         </a>
       </div>
     </div>
