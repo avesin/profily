@@ -7,11 +7,25 @@ export const metadata: Metadata = {
   description: "Nextfolio Projects",
 };
 
+export function GooglePlayIframe() {
+  return (
+    <iframe
+      src="https://play.google.com/store/apps/details?id=com.koinworks.app&hl=en"
+      width="100%"
+      height="600"
+      style={{ border: 'none', borderRadius: '12px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
+      allowFullScreen
+      title="KoinWorks App on Google Play"
+    ></iframe>
+  );
+}
+
 export default function Projects() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-medium tracking-tight">Projects</h1>
       <div>
+        {GooglePlayIframe()}
         {projects.map((project, index) => (
           <Link
             key={index}
@@ -28,3 +42,5 @@ export default function Projects() {
     </section>
   );
 }
+
+
